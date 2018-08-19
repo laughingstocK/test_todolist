@@ -29,7 +29,7 @@ const TodoInput = (props) => {
             className='btn-primary mb-3 form-control'
             onClick={props.editing ? props.updateTodo : props.addTodo}
             disabled={props.newTitle === ''}>
-            {props.editing ? 'UPDATE TO DO NEW' : 'ADD TODO NEW'}
+            {props.editing ? 'UPDATE TODO' : 'ADD TODO'}
           </button>
 
         </div>

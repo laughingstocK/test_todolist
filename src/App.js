@@ -58,6 +58,7 @@ class App extends Component {
   }
 
   async addTodo(){
+
     const response = await Axios.post(`${this.apiUrl}/todos`,{
       title: this.state.newTitle,
       description: this.state.newDescription,
@@ -68,6 +69,12 @@ class App extends Component {
     todos.push(response.data)
     this.setState({
       todos: todos
+    })
+
+    this.setState({
+      newTitle: '',
+      newDate: '',
+      newDescription: '',
     })
 
     this.alert('Todo Added')
@@ -161,7 +168,7 @@ class App extends Component {
         }
         <h2 className='text-center my-4'>Todos List</h2>
 
-          <TodoInput 
+          <TodoInput
             titleChange={this.titleChange}
             dateChange={this.dateChange}
             descriptionChange={this.descriptionChange}

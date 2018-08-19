@@ -26,9 +26,9 @@ const TodoListItem = (props) => {
                   Update
               </button>
                 <button 
-                className={props.status.status ? 'btn-sm ml-2 btn btn-success': 'btn-sm ml-2 btn btn-success disabled'}  
+                className='btn-sm ml-2 btn btn-success'  
                 onClick={() => props.doneTodo(props.index)}
-                disabled={!props.status.status}>                
+                disabled={props.status.status}>                
                 Done
               </button>
             </div>
