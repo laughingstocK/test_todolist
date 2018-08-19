@@ -4,17 +4,17 @@ import TodoListItem from './TodoListItem'
 const TodoList = (props) => {
     return <div>
         <ul className='list-group'>
-          {props.todos.map((item,index)=>{
-            return <TodoListItem
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    editTodo={props.editTodo}
-                    deleteTodo={props.deleteTodo}
-                    doneTodo={props.doneTodo}
-                    status = {props.todos[index]}
-                  />
-        })}
+            {props.todos.map((item,index)=>{
+                return <TodoListItem
+                        key={item.id}
+                        item={item}
+                        index={index}
+                        editTodo={props.editTodo}
+                        deleteTodo={props.deleteTodo}
+                        doneTodo={props.doneTodo}
+                        status = {props.todos[index]}
+                        />
+            })}
         </ul>
     </div>
 }

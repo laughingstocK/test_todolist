@@ -25,14 +25,13 @@ const TodoInput = (props) => {
           value={props.newDate}>
         </input>
 
-          <button 
-            className='btn-primary mb-3 form-control'
-            onClick={props.editing ? props.updateTodo : props.addTodo}
-            disabled={props.newTitle === ''}>
-            {props.editing ? 'UPDATE TODO' : 'ADD TODO'}
-          </button>
-
-        </div>
+        <button 
+          className='btn-primary mb-3 form-control'
+          onClick={props.editing ? props.updateTodo : props.addTodo}
+          disabled={props.newTitle === ''}> {/*disable button if empty title*/}
+          {props.editing ? 'UPDATE TODO' : 'ADD TODO'}
+        </button>
+    </div>
 }
 
 export default TodoInput
