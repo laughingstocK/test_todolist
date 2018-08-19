@@ -100,7 +100,6 @@ class App extends Component {
 
  async doneTodo(index){
     const todo = this.state.todos[index]
-    console.log(todo.id)
 
     const response = await Axios.put(`${this.apiUrl}/todos/${todo.id}`,{
       status: true,
@@ -112,7 +111,7 @@ class App extends Component {
       todos: todos,
       })
 
-    this.alert('This todo is done')
+    this.alert(`${todo.title} is done`)
   }
 
   async updateTodo(){
@@ -180,7 +179,6 @@ class App extends Component {
         deleteTodo={this.deleteTodo}
         doneTodo={this.doneTodo}
         todos = {this.state.todos}
-        test = {this.test}
       />
         
      } 

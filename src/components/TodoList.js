@@ -12,7 +12,7 @@ const TodoList = (props) => {
                     editTodo={props.editTodo}
                     deleteTodo={props.deleteTodo}
                     doneTodo={props.doneTodo}
-                    test = {props.test}
+                    status = {props.todos[index]}
                   />
         })}
         </ul>

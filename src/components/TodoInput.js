@@ -10,13 +10,13 @@ const TodoInput = (props) => {
           value={props.newTitle}>
         </input>
 
-        <input 
+        <textarea 
           className='my-4 form-control' 
           type='text' 
           placeholder='Description'
           onChange={props.descriptionChange}
           value={props.newDescription}>
-        </input>
+        </textarea>
 
         <input 
           className='my-4 form-control' 
