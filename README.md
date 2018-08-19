@@ -1,1 +1,3 @@
-## $npm start (to start this project)
+## How to start project
+1) $ npm install
+2) $ npm start
