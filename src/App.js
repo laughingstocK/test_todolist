@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListItem from './ListItem'
+import ListItem from './components/ListItem'
 import Axios from 'axios';
+import TodoInput from './components/TodoInput'
 
 class App extends Component {
   
@@ -29,7 +30,6 @@ class App extends Component {
     this.deleteTodo = this.deleteTodo.bind(this)
   }
 
-
   async componentDidMount(){
     const response = await Axios.get(`${this.apiUrl}/todos`)
     this.setState({
@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   titleChange(event){
+    // console.log(event.target.value)
     this.setState({
       newTitle: event.target.value
     })
@@ -76,7 +77,7 @@ class App extends Component {
     const todos = this.state.todos
 
     const todo = todos[index]
-    const response = await Axios.delete(`${this.apiUrl}/todos/${todo.id}`)
+    await Axios.delete(`${this.apiUrl}/todos/${todo.id}`)
 
     delete todos[index]
     this.setState({ todos: todos })
@@ -155,36 +156,19 @@ class App extends Component {
         </div>
         }
         <h2 className='text-center my-4'>ToDos List</h2>
-        <input 
-          className='my-4 form-control' 
-          type='text' 
-          placeholder='add todo'
-          onChange={this.titleChange}
-          value={this.state.newTitle}>
-        </input>
 
-        <input 
-          className='my-4 form-control' 
-          type='text' 
-          placeholder='Description'
-          onChange={this.descriptionChange}
-          value={this.state.newDescription}>
-        </input>
+          <TodoInput 
+            titleChange={this.titleChange}
+            dateChange={this.dateChange}
+            descriptionChange={this.descriptionChange}
+            editing={this.state.editing}
+            newTitle = {this.state.newTitle}
+            newDate = {this.state.newDate}
+            newDescription = {this.state.newDescription}
+            updateTodo = {this.updateTodo}
+            addTodo = {this.addTodo}
+          />
 
-        <input 
-          className='my-4 form-control' 
-          type='date' 
-          placeholder='Date'
-          onChange={this.dateChange}
-          value={this.state.newDate}>
-        </input>
-
-          <button 
-            className='btn-primary mb-3 form-control'
-            onClick={this.state.editing ? this.updateTodo : this.addTodo}
-            disabled={this.state.newTitle === ''}>
-            {this.state.editing ? 'UPDATE TO DO' : 'ADD TODO'}
-          </button>
      { !this.state.editing &&
       <ul className='list-group'>
           {this.state.todos.map((item,index)=>{
