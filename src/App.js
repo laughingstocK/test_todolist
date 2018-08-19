@@ -55,27 +55,11 @@ class App extends Component {
     })
   }
 
-  // addTodo(){
-  //   const newTodo = {
-  //     name: this.state.newTodo,
-  //     id: this.state.generateId,
-  //   }
-
-  //   const todos = this.state.todos
-  //   todos.push(newTodo)
-  //   this.setState({
-  //     todos: todos
-  //   })
-
-  //   this.alert('Todo Added')
-  // }
-
   async addTodo(){
 
     const response = await Axios.post(`${this.apiUrl}/todos`,{
       title: this.state.newTitle,
       description: this.state.newDescription,
-      // data: this.state.newDate,
       date: Date.parse(this.state.newDate)
     })
 
@@ -88,13 +72,6 @@ class App extends Component {
     this.alert('Todo Added')
   }
 
-  // deleteTodo(index){
-  //   const todos = this.state.todos
-  //   delete todos[index]
-  //   this.setState({ todos: todos })
-  //   this.alert('Todo Deleted Successfully')
-  // }
-
   async deleteTodo(index){
     const todos = this.state.todos
 
@@ -105,18 +82,6 @@ class App extends Component {
     this.setState({ todos: todos })
     this.alert('Todo Deleted Successfully')
   }
-
-  // editTodo(index){
-  //   const todo = this.state.todos[index]
-
-  //   this.setState({
-  //     editing: true,
-  //     newTitle: todo.title,
-  //     newDate: todo.date,
-  //     newDescription: todo.description,
-  //     editingIndex: index,
-  //   })
-  // }
 
   editTodo(index){
     const todo = this.state.todos[index]
@@ -148,15 +113,6 @@ class App extends Component {
     this.alert('This todo is done')
   }
 
-  // updateTodo(){
-  //   const todo = this.state.todos[this.state.editingIndex]
-  //   todo.title = this.state.newTodo
-  //   const todos = this.state.todos
-  //   todos[this.state.editingIndex] = todo
-  //   this.setState({ todos: todos ,editing: false ,editingIndex: null, newTodo: ''})
-  //   this.alert('Todo Updated Successfully')
-  // }
-
   async updateTodo(){
     const todo = this.state.todos[this.state.editingIndex]
     const response = await Axios.put(`${this.apiUrl}/todos/${todo.id}`,{
@@ -178,15 +134,6 @@ class App extends Component {
 
     this.alert('Todo Updated Successfully')
   }
-
-  // generateId(){
-  //   const lastTodo = this.state.todos[this.state.todos.length - 1].id+1
-
-  //   if(lastTodo){
-  //     return lastTodo.id + 1
-  //   }
-  //     return 1
-  // }
 
   alert(notification){
     this.setState({
@@ -248,20 +195,6 @@ class App extends Component {
                     deleteTodo={ () => { this.deleteTodo(index) }}
                     doneTodo={ () => {this.doneTodo(index)}}
                   />
-          /* return <li key={item.id} className='list-group-item'>{item.name}
-                  
-                  <button 
-                    className='btn-sm ml-4 btn btn-info'
-                    onClick={()=> this.editTodo(index)}>
-                      update
-                  </button>
-                    
-                  <button 
-                    className='btn-sm ml-4 btn btn-danger'
-                    onClick={()=> this.deleteTodo(index)}>
-                      del
-                    </button>
-                </li>  */
         })}
         </ul>
      } 

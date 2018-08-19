@@ -2,7 +2,6 @@ import React from 'react'
 
 const ListItem = (props) => {
     return <div>
-        {/* <li className='list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start'> */}
         <li className={
           props.item.status ? 
           'list-group-item list-group-item-success list-group-item-action flex-column align-items-start' : 
