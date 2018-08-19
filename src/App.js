@@ -81,14 +81,18 @@ class App extends Component {
   }
 
   async deleteTodo(index){
-    const todos = this.state.todos
 
-    const todo = todos[index]
-    await Axios.delete(`${this.apiUrl}/todos/${todo.id}`)
+    var result = window.confirm('Delete Todo?')
+    if (result) {
+      const todos = this.state.todos
 
-    delete todos[index]
-    this.setState({ todos: todos })
-    this.alert('Todo Deleted Successfully')
+      const todo = todos[index]
+      await Axios.delete(`${this.apiUrl}/todos/${todo.id}`)
+  
+      delete todos[index]
+      this.setState({ todos: todos })
+      this.alert('Todo Deleted')
+    } 
   }
 
   editTodo(index){
@@ -140,7 +144,7 @@ class App extends Component {
       newDescription: '',
       })
 
-    this.alert('Todo Updated Successfully')
+    this.alert('Todo Updated')
   }
 
   alert(notification){
@@ -181,13 +185,14 @@ class App extends Component {
           />
 
      { !this.state.editing &&
+      <div style={{ overflowY: 'scroll' , height: '300px'}}>
       <TodoList 
         editTodo={this.editTodo}
         deleteTodo={this.deleteTodo}
         doneTodo={this.doneTodo}
         todos = {this.state.todos}
       />
-        
+      </div>       
      } 
       </div>
     );
