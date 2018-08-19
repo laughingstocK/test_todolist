@@ -8,7 +8,7 @@ const TodoListItem = (props) => {
           'list-group-item list-group-item-success list-group-item-action flex-column align-items-start mb-2' : 
           'list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start mb-2'}>
           <div className="d-flex w-100 justify-content-between">
-              <h4 className="mb-1">{props.item.title}</h4>
+              <h4 className="mb-1">{props.item.id}: {props.item.title}</h4>
               <small className="text-muted">{new Date(props.item.date).toJSON().slice(0,10)}</small>
             </div>
           <div>
