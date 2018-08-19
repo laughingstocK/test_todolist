@@ -160,7 +160,7 @@ class App extends Component {
           <p className='text-center mt-3'>{this.state.notification}</p>
         </div>
         }
-        <h2 className='text-center my-4'>ToDos List</h2>
+        <h2 className='text-center my-4'>Todos List</h2>
 
           <TodoInput 
             titleChange={this.titleChange}

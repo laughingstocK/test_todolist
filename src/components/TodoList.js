@@ -9,9 +9,6 @@ const TodoList = (props) => {
                     key={item.id}
                     item={item}
                     index={index}
-                    // editTodo={ () => { props.editTodo(index) }}
-                    // deleteTodo={ () => { props.deleteTodo(index) }}
-                    // doneTodo={ () => {props.doneTodo(index)}}
                     editTodo={props.editTodo}
                     deleteTodo={props.deleteTodo}
                     doneTodo={props.doneTodo}

@@ -5,7 +5,7 @@ const TodoInput = (props) => {
         <input 
           className='my-4 form-control' 
           type='text' 
-          placeholder='Add todo'
+          placeholder='Title'
           onChange={props.titleChange}
           value={props.newTitle}>
         </input>
@@ -21,7 +21,6 @@ const TodoInput = (props) => {
         <input 
           className='my-4 form-control' 
           type='date' 
-          placeholder='Date'
           onChange={props.dateChange}
           value={props.newDate}>
         </input>
