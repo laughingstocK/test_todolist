@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListItem = (props) => {
+const TodoListItem = (props) => {
     return <div>
         <li className={
           props.item.status ? 
@@ -16,18 +16,23 @@ const ListItem = (props) => {
             <div className="d-flex flex-row-reverse w-100">
               <button 
                 className='btn-sm ml-2 btn btn-danger'
-                onClick={props.deleteTodo}>
+                // onClick={props.deleteTodo}>
+                onClick={() => props.deleteTodo(props.index)}>
                 Delete
               </button>
               <button 
                 className='btn-sm ml-2 btn btn-info'
-                onClick={props.editTodo}>
-                Update
+                onClick={() => props.editTodo(props.index)}
+                // onClick={console.log(props.index)}
+                // onClick={() => selectTodo(todo.id)}>
+                // onClick={() => props.test(props.index)}
+                >
+                  Update
               </button>
               <button 
                 className='btn-sm ml-2 btn btn-success'
-                onClick={props.doneTodo}
-                >
+                onClick={() => props.doneTodo(props.index)}
+                >                
                 Done
               </button>
             </div>
@@ -35,4 +40,4 @@ const ListItem = (props) => {
     </div>
 }
 
-export default ListItem
+export default TodoListItem

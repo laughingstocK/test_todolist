@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListItem from './components/ListItem'
 import Axios from 'axios';
 import TodoInput from './components/TodoInput'
+import TodoList from './components/TodoList'
 
 class App extends Component {
   
@@ -28,6 +28,8 @@ class App extends Component {
     this.doneTodo = this.doneTodo.bind(this)
     this.titleChange = this.titleChange.bind(this)
     this.deleteTodo = this.deleteTodo.bind(this)
+    this.test = this.test.bind(this)
+    this.editTodo = this.editTodo.bind(this)
   }
 
   async componentDidMount(){
@@ -38,7 +40,6 @@ class App extends Component {
   }
 
   titleChange(event){
-    // console.log(event.target.value)
     this.setState({
       newTitle: event.target.value
     })
@@ -57,7 +58,6 @@ class App extends Component {
   }
 
   async addTodo(){
-
     const response = await Axios.post(`${this.apiUrl}/todos`,{
       title: this.state.newTitle,
       description: this.state.newDescription,
@@ -86,6 +86,7 @@ class App extends Component {
 
   editTodo(index){
     const todo = this.state.todos[index]
+    
     var date = new Date(todo.date).toJSON().slice(0,10)
 
     this.setState({
@@ -94,10 +95,10 @@ class App extends Component {
       newDate: date,
       newDescription: todo.description,
       editingIndex: index,
-    })
+    }) 
   }
 
- async  doneTodo(index){
+ async doneTodo(index){
     const todo = this.state.todos[index]
     console.log(todo.id)
 
@@ -146,6 +147,10 @@ class App extends Component {
       })
     },5000)
   }
+
+  test(index){
+    console.log(index)
+  }
  
   render() {
     return (
@@ -170,17 +175,14 @@ class App extends Component {
           />
 
      { !this.state.editing &&
-      <ul className='list-group'>
-          {this.state.todos.map((item,index)=>{
-            return <ListItem
-                    key={item.id}
-                    item={item}
-                    editTodo={ () => { this.editTodo(index) }}
-                    deleteTodo={ () => { this.deleteTodo(index) }}
-                    doneTodo={ () => {this.doneTodo(index)}}
-                  />
-        })}
-        </ul>
+      <TodoList 
+        editTodo={this.editTodo}
+        deleteTodo={this.deleteTodo}
+        doneTodo={this.doneTodo}
+        todos = {this.state.todos}
+        test = {this.test}
+      />
+        
      } 
       </div>
     );
